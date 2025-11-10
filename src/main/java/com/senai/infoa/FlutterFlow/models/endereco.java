@@ -5,13 +5,11 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
 @Table(name="endereco")
-public class endereco {
+public class Endereco {
 
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -39,14 +37,10 @@ public class endereco {
     @Column(name="referencia")
     private String referencia;
 
-    @ManyToOne
-    @JoinColumn(name = "usuario_id", nullable = false)
-    private usuario usuario;
+    public Endereco() {}
 
-    public endereco() {}
-
-    public endereco(Integer id, String logradouro, String localidade, String cep, String numero, String complemento,
-            String bairro, String referencia, com.senai.infoa.FlutterFlow.models.usuario usuario) {
+    public Endereco(Integer id, String logradouro, String localidade, String cep, String numero, String complemento,
+            String bairro, String referencia) {
         this.id = id;
         this.logradouro = logradouro;
         this.localidade = localidade;
@@ -55,7 +49,6 @@ public class endereco {
         this.complemento = complemento;
         this.bairro = bairro;
         this.referencia = referencia;
-        this.usuario = usuario;
     }
 
     public Integer getId() {
@@ -121,15 +114,4 @@ public class endereco {
     public void setReferencia(String referencia) {
         this.referencia = referencia;
     }
-
-    public usuario getUsuario() {
-        return usuario;
-    }
-
-    public void setUsuario(usuario usuario) {
-        this.usuario = usuario;
-    }
-
-    
-    
 }

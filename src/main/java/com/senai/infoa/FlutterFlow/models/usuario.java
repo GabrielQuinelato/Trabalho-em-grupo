@@ -7,11 +7,13 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
 @Table(name="usuario")
-public class usuario {
+public class Usuario {
     
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -36,9 +38,13 @@ public class usuario {
     @Column(name="dataNascimento")
     private LocalDate dataNascimento;
 
-    public usuario () {}
+    @ManyToOne
+    @JoinColumn(name = "endereco_id")
+    private Endereco Endereco;
 
-    public usuario(Integer id, String Email, String senha, String confirmarSenha , String nomeCompleto, String cpf, LocalDate dataNascimento ) {
+    public Usuario () {}
+
+    public Usuario(Integer id, String Email, String senha, String confirmarSenha , String nomeCompleto, String cpf, LocalDate dataNascimento ) {
         this.id = id;
         this.Email = Email;
         this.senha = senha;
@@ -46,6 +52,10 @@ public class usuario {
         this.nomeCompleto = nomeCompleto;
         this.cpf = cpf;
         this.dataNascimento = dataNascimento;
+    }
+
+    public Usuario(Endereco Endereco) {
+        this.Endereco = Endereco;
     }
 
     public Integer getId() {
@@ -102,6 +112,14 @@ public class usuario {
 
     public void setDataNascimento(LocalDate dataNascimento) {
         this.dataNascimento = dataNascimento;
+    }
+
+    public Endereco getEndereco() {
+        return Endereco;
+    }
+
+    public void setEndereco(Endereco Endereco) {
+        this.Endereco = Endereco;
     }
 
 }

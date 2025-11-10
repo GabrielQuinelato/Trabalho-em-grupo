@@ -3,26 +3,27 @@ package com.senai.infoa.FlutterFlow.controllers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.senai.infoa.FlutterFlow.models.usuario;
-import com.senai.infoa.FlutterFlow.services.usuarioService;
+import com.senai.infoa.FlutterFlow.models.Usuario;
+import com.senai.infoa.FlutterFlow.services.UsuarioService;
 
 @RestController
-@RequestMapping
-public class usuarioController {
+@RequestMapping("/usuario")
+public class UsuarioController {
 
     @Autowired
-    private usuarioService us;
+    private UsuarioService us;
     
-    @PostMapping("/salvar")
-    public usuario salvar(@RequestParam usuario usuario) {
+    @PostMapping("/cadastroUsuario")
+    public Usuario salvar(@RequestBody Usuario usuario) {
         return us.salvar(usuario);
     }
 
-    @PostMapping("/confirmar")
+    @PostMapping("/login")
 public ResponseEntity<String> cadastrarUsuario(
         @RequestParam String senha,
         @RequestParam String email
@@ -31,6 +32,6 @@ public ResponseEntity<String> cadastrarUsuario(
         return ResponseEntity.badRequest().body("As senhas não coincidem!");
     }
 
-    return ResponseEntity.ok("Usuário cadastrado com sucesso!");
+    return ResponseEntity.ok("Usuário logado com sucesso!");
     }
 }
