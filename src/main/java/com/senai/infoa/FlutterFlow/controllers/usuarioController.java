@@ -31,6 +31,6 @@ public ResponseEntity<String> cadastrarUsuario(
         return ResponseEntity.badRequest().body("As senhas não coincidem!");
     }
 
-    return ResponseEntity.ok("Usuário logado com sucesso!");
+    return ResponseEntity.ok("Usuário cadastrado com sucesso!");
     }
 }

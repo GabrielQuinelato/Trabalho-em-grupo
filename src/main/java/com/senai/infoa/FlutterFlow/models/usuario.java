@@ -22,10 +22,10 @@ public class usuario {
     private String Email;
 
     @Column(name="senha")
-    private Integer senha;
+    private String senha;
 
     @Column(name="confirmar_senha")
-    private Integer confirmarSenha;
+    private String confirmarSenha;
 
     @Column(name="nomeCompleto")
     private String nomeCompleto;
@@ -38,7 +38,7 @@ public class usuario {
 
     public usuario () {}
 
-    public usuario(Integer id, String Email, Integer senha, Integer confirmarSenha , String nomeCompleto, String cpf, LocalDate dataNascimento ) {
+    public usuario(Integer id, String Email, String senha, String confirmarSenha , String nomeCompleto, String cpf, LocalDate dataNascimento ) {
         this.id = id;
         this.Email = Email;
         this.senha = senha;
@@ -64,19 +64,19 @@ public class usuario {
         this.Email = Email;
     }
 
-    public Integer getSenha() {
+    public String getSenha() {
         return senha;
     }
 
-    public void setSenha(Integer senha) {
+    public void setSenha(String senha) {
         this.senha = senha;
     }
 
-    public Integer getConfirmarSenha() {
+    public String getConfirmarSenha() {
         return confirmarSenha;
     }
 
-    public void setConfirmarSenha(Integer confirmarSenha) {
+    public void setConfirmarSenha(String confirmarSenha) {
         this.confirmarSenha = confirmarSenha;
     }
 
