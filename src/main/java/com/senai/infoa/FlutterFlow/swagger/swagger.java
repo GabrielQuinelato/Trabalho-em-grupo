@@ -10,7 +10,7 @@ import io.swagger.v3.oas.annotations.info.Info;
     info = @Info(
         title = "API",
         version = "1.0",
-        description = "API para o FlutterFlow"
+        description = "Gabriel Quinelato, Luis Eduardo. Rafael Felipe, Kayke dos Santos"
     )
 )
 public class swagger {
