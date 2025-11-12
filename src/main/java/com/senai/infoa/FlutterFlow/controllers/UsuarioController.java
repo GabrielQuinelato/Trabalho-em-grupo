@@ -2,7 +2,9 @@ package com.senai.infoa.FlutterFlow.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -33,5 +35,10 @@ public ResponseEntity<String> cadastrarUsuario(
     }
 
     return ResponseEntity.ok("Usuário logado com sucesso!");
+    }
+
+    @PutMapping("/atualizar/{id}")
+    public Usuario atualizar(@PathVariable Integer id, @RequestBody Usuario usuario) {
+        return us.atualizar(usuario, id);
     }
 }
