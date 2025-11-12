@@ -7,10 +7,12 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.senai.infoa.FlutterFlow.models.Endereco;
 import com.senai.infoa.FlutterFlow.services.EnderecoService;
+
 
 
 @RestController
@@ -20,9 +22,9 @@ public class EnderecoController {
     @Autowired
     private EnderecoService es;
     
-    @PostMapping("/salvarEndereco")
-    public Endereco salvar(@RequestBody Endereco Endereco) {
-        return es.salvar(Endereco);
+    @PostMapping("/salvar")
+    public Endereco salvar(@RequestParam String cep, @RequestParam(required=false) String numero, @RequestParam(required=false) String referencia) {
+        return es.salvar(cep, numero, referencia);
     }
 
     @PutMapping("/atualizar/{id}")
@@ -34,4 +36,10 @@ public class EnderecoController {
     public Endereco buscarPorId(@PathVariable Integer id) {
         return es.buscarPorId(id);
     }
+
+    @GetMapping("/buscar")
+    public String getViaCep(@RequestParam String cep) {
+        return new String();
+    }
+    
 }
